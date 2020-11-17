@@ -25,24 +25,26 @@ import {
   DebugInstructions,
   ReloadInstructions,
 } from 'react-native/Libraries/NewAppScreen';
+import ImageListView from './components/ImageListView';
 
 declare const global: {HermesInternal: null | {}};
-
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
+import ImageDetailedView from './components/ImageDetailedView';
+const Stack = createStackNavigator();
 const App = () => {
   return (
-    <>
-      <StatusBar barStyle="dark-content" />
-      <SafeAreaView>
-        <ScrollView
-          contentInsetAdjustmentBehavior="automatic"
-          style={styles.scrollView}>
-        
-          <View style={styles.body}>
-        
-          </View>
-        </ScrollView>
-      </SafeAreaView>
-    </>
+    
+    
+
+          <NavigationContainer>
+            <Stack.Navigator initialRouteName="Home">
+              <Stack.Screen name="Home" component={ImageListView} />
+              <Stack.Screen name="Details" component={ImageDetailedView} />
+            </Stack.Navigator>
+          </NavigationContainer>
+    
+    
   );
 };
 
