@@ -4,7 +4,7 @@ import {Asset} from '../types/Asset';
 export const getImageInfo = ():Promise<Array<Asset>> =>  {
     
     return new Promise((resolve,reject)=>{
-        axios.get("https://shibe.online/api/shibes?count=10&urls=true&httpsUrls=false")
+        axios.get("https://shibe.online/api/shibes?count=100&urls=true&httpsUrls=false")
         .then((response)=>{
            
             let assets: Array<Asset> = [];

@@ -3,6 +3,7 @@ import {
   SafeAreaView,
   StyleSheet,
   ScrollView,
+  FlatList,
   View,
   Text,
   StatusBar,
@@ -44,21 +45,22 @@ function ImageListView({ navigation }:{navigation:any}) {
         navigation.navigate('Details',asset)
     }
 
+    const renderSummaryView = ({item}) => {
+      
+        return(
+                <ImageSummaryView asset={item} onPress={()=>handlePress(item)}/>
+        )
+        
+    }
 
     return (
      
-        <ScrollView
-          contentInsetAdjustmentBehavior="automatic"
-          style={styles.scrollView}>
-              <View>
-               
-            {
-                assets.length > 0 && assets.map((asset:Asset, index:number)=>(
-                   <ImageSummaryView key={index} asset={asset} onPress={()=>handlePress(asset)}/>
-                ))
-            }
-            </View>
-        </ScrollView>
+        <FlatList
+            renderItem={renderSummaryView}
+            data={assets}
+          style={styles.scrollView}/>
+              
+
        
     )
 }
